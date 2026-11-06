@@ -18,6 +18,7 @@ redirect_from:
   - PhD supervisor: Professor Junxian He
 - B.Eng., Shanghai Jiao Tong University, 2020-2024
   - Graduated in June 2024
+  - Previously advised by Professor Junxian He during undergraduate studies at Shanghai Jiao Tong University
 
 ## Research Experience
 
