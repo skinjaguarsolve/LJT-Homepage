@@ -35,33 +35,17 @@ jobs:
       - name: Minify JS files
         run: |
           uglifyjs assets/js/plugins/jquery.greedy-navigation.js assets/js/_main.js assets/js/theme.js -c -m -o assets/js/main.min.js
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl /LJT-Homepage
+        env:
+          JEKYLL_ENV: production
       - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@v6.0.0
         with:
           enablement: true
-      - name: Build with Jekyll
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5.0.0
-
-  build_check:
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7.0.1
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1.328.0
-        with:
-          ruby-version: '3.1'
-          bundler-cache: true
-          cache-version: 0
-      - name: Verify Jekyll build
-        run: bundle exec jekyll build --baseurl /LJT-Homepage
-        env:
-          JEKYLL_ENV: production
 
   deploy:
     environment:
